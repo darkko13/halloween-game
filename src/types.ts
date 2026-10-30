@@ -101,6 +101,12 @@ export interface HighScoreStore {
   save(score: number): void;
 }
 
+/** Procedural sound-effect player for the jump cue (spec 002-sound-effects). */
+export interface AudioPlayer {
+  playJump(): void; // non-throwing; swallows audio errors internally
+  dispose(): void;
+}
+
 export interface Rng {
   next(): number; // [0, 1)
 }

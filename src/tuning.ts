@@ -27,6 +27,13 @@ export const PALETTE = {
  */
 export const PUDDLE = { width: 60, growFrames: 30 } as const;
 
+/** Jump sound-effect synth parameters (spec 002-sound-effects). */
+export const AUDIO = {
+  jumpFrequency: 440,
+  jumpDurationMs: 80,
+  jumpGain: 0.15,
+} as const;
+
 /** Top of the ground line, in logical px. */
 export const GROUND_Y = 260;
 
