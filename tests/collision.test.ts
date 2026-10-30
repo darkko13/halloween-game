@@ -106,6 +106,17 @@ describe('hasCollision', () => {
     expect(hasCollision(dino, obstacles)).toBe(true);
   });
 
+  it('is false when sprite rects overlap but hitboxes do not (near miss)', () => {
+    const dino = groundDino();
+    // Position the cactus just past the dino hitbox's right edge: sprite
+    // rects overlap (dino head overhang vs cactus left arm tip), hitboxes
+    // do not. Spec 2.5 near-miss rule.
+    const cactus = smallCactus(dino.hitbox.x + dino.hitbox.width + 1);
+    expect(intersects(dino, cactus)).toBe(true);
+    expect(intersects(dino.hitbox, cactus.hitbox)).toBe(false);
+    expect(hasCollision(dino, [cactus])).toBe(false);
+  });
+
   it('is false when the dino is airborne above a cactus', () => {
     const ground = groundDino();
     const lift = 60;
